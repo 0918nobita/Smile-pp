@@ -84,7 +84,7 @@ operators$ = array$("+ - * / DIV MOD << >> NOT ( ) == != < <= > >= && || AND OR 
 ' 予約語
 
 dim reservedWords$[0]
-reservedWords$ = array$("IF THEN ELSE ELSEIF ENDIF GOTO GOSUB RETURN ON FOR NEXT WHILE WEND REPEAT UNTIL BREAK CONTINUE DEF END VAR DIM DATA READ RESTORE PRINT INPUT LINPUT CALL SWAP OUT COMMON USE EXEC")
+reservedWords$ = array$("IF THEN ELSE ELSEIF ENDIF GOTO GOSUB RETURN ON FOR NEXT WHILE WEND REPEAT UNTIL BREAK CONTINUE DEF END VAR DIM DATA READ RESTORE PRINT INPUT LINPUT CALL SWAP OUT COMMON USE EXEC FILES SAVE RENAME DELETE CHKFILE PRGEDIT PRGGET$ PRGSET PRGINS PRGDEL PRGSIZE PRGNAME$ XSCREEN DISPLAY VISIBLE BACKCOLOR ACLS FADE CLS COLOR LOCATE PRINT ? ATTR SCROLL FONTDEF WIDTH")
 
 ' 組み込み定数
 
@@ -112,6 +112,7 @@ def lex string$, tk$[], type[]
 					if indexOf$(reservedWords$, record$) != -1 then phase[len(phase) - 1] = RESERVED
 					if indexOf$(operators$, record$) != -1 then phase[len(phase) - 1] = OPERATOR
 				endif
+				if phase[len(phase) - 1] == DIRECTION && indexOf$(constants$, record$) != -1 then phase[len(phase) - 1] = CONSTANT
 				push type, pop(phase)
 				push tk$, record$
 				record$ = ""
