@@ -74,7 +74,7 @@ end
 ' 定数
 
 var UNKNOWN = 1, DIRECTION = 2, RESERVED = 3
-var OPERATOR = 4, CONSTANT = 5
+var OPERATOR = 4, CONSTANT = 5, STRING = 6
 
 ' 演算子
 
@@ -102,10 +102,22 @@ def lex string$, tk$[], type[]
 	while true
 		var c$ = mid$(string$, index, 1)
 
-		if c$ == "#" then
-			push phase, DIRECTION
-			inc index
+		if c$ == chr$(34) && !len(phase) then
+			push phase, STRING
 			isRecorded = true
+			inc index
+		elseif c$ == chr$(34) && !len(phase) then
+			push type, pop(phase)
+			push tk$, record$ + chr$(34)
+			record$ = ""
+			isRecorded = false
+			inc index
+		elseif len(phase) && phase[len(phase) - 1] == STRING then
+			inc index
+		elseif c$ == "#" then
+			push phase, DIRECTION
+			isRecorded = true
+			inc index
 		elseif c$ == " " || index == len(string$) - 1 then
 			if len(phase) then
 				if phase[len(phase) - 1] == UNKNOWN then
@@ -119,7 +131,7 @@ def lex string$, tk$[], type[]
 				isRecorded = false
 			endif
 			inc index
-		elseif c$ != " " && isRecorded == false then
+		elseif c$ != " " && !isRecorded then
 			push phase, UNKNOWN
 			isRecorded = true
 			inc index
