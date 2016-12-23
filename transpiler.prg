@@ -112,7 +112,7 @@ def lex string$, tk$[], type[]
 			record$ = ""
 			isRecorded = false
 			inc index
-		elseif len(phase) && phase[len(phase) - 1] == STRING then
+		elseif len(phase) && phase[len(phase) - 1] == STRING && index != len(string$) - 1 then
 			inc index
 		elseif c$ == "#" then
 			push phase, DIRECTION
@@ -125,6 +125,7 @@ def lex string$, tk$[], type[]
 					if indexOf$(operators$, record$) != -1 then phase[len(phase) - 1] = OPERATOR
 				endif
 				if phase[len(phase) - 1] == DIRECTION && indexOf$(constants$, record$) != -1 then phase[len(phase) - 1] = CONSTANT
+				if phase[len(phase) - 1] == STRING then ? "Error: 文字列定数がダブルクォートによって正しく閉じられていません" : break
 				push type, pop(phase)
 				push tk$, record$
 				record$ = ""
