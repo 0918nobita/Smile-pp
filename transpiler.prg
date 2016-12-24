@@ -129,9 +129,9 @@ def lex string$, tk$[], type[]
 		elseif phase == STRING && index != len(string$) - 1 then
 			inc index
 		elseif c$ == chr$(34) && phase != STRING then
-			if indexOf$(reservedWords$, record$) != -1 then phase = RESERVED
-			if indexOf$(operators$, record$) != -1 then phase = OPERATOR
-			if phase == DIRECTION && indexOf$(constants$, record$) != -1 then phase = CONSTANT
+			if indexOf$(reservedWords$, upcase$(record$)) != -1 then phase = RESERVED
+			if indexOf$(operators$, upcase(record$)) != -1 then phase = OPERATOR
+			if phase == DIRECTION && indexOf$(constants$, upcase$(record$)) != -1 then phase = CONSTANT
 			push type, phase : phase = NONE
 			push tk$, record$
 			record$ = ""
@@ -143,10 +143,10 @@ def lex string$, tk$[], type[]
 			inc index
 		elseif c$ == " " || index == len(string$) - 1 then
 			if phase == UNKNOWN then
-				if indexOf$(reservedWords$, record$) != -1 then phase = RESERVED
-				if indexOf$(operators$, record$) != -1 then phase = OPERATOR
+				if indexOf$(reservedWords$, upcase$(record$)) != -1 then phase = RESERVED
+				if indexOf$(operators$, upcase$(record$)) != -1 then phase = OPERATOR
 			endif
-			if phase == DIRECTION && indexOf$(constants$, record$) != -1 then phase = CONSTANT
+			if phase == DIRECTION && indexOf$(constants$, upcase$(record$)) != -1 then phase = CONSTANT
 			if phase == STRING then ? "Error: 文字列定数がダブルクォートによって正しく閉じられていません" : break
 			if phase != NONE then
 				push type, phase : phase = NONE
