@@ -6,6 +6,20 @@ option strict
 acls
 prgEdit 1
 
+' 文字列に含まれる小文字アルファベットを大文字に変換する
+
+def upcase$(string$)
+	var i
+	var charCode
+	for i = 0 to len(string$) - 1
+		charCode = asc(mid$(string$, i, 1))
+		if charCode >= asc("a") && charCode <= asc("z") then
+			string$ = substr$(string$, i, 1, chr$(charCode - 32))
+		endif
+	next
+	return string$
+end
+
 ' 配列の要素を検索する
 
 def indexOf$(array$[], string$)
