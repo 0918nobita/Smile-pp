@@ -174,6 +174,19 @@ for n = 0 to prgSize(1) - 1
 	dim type[0]
 	lex prgGet$(), tk$, type
 	for i = 0 to len(tk$)
-		? tk$[i] + " " + str$(type[i])
+		? tk$[i] + " -> ";
+		if type[i] == UNKNOWN then
+			? "Unknown"
+		elseif type[i] == DIRECTION then
+			? "Direction"
+		elseif type[i] == RESERVED then
+			? "Reserved"
+		elseif type[i] == OPERATOR then
+			? "Operator"
+		elseif type[i] == CONSTANT then
+			? "Constant"
+		elseif type[i] == STRING then
+			? "String"
+		endif
 	next
 next
