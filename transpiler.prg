@@ -73,7 +73,7 @@ end
 
 ' 定数
 
-var UNKNOWN = 1, DIRECTION = 2, RESERVED = 3
+var NONE = -1, UNKNOWN = 1, DIRECTION = 2, RESERVED = 3
 var OPERATOR = 4, CONSTANT = 5, STRING = 6
 
 ' 演算子
@@ -95,53 +95,52 @@ constants$ = array$("ON OFF YES NO TRUE FALSE BLACK NAVY BLUE GREEN TEAL LIME AQ
 
 def lex string$, tk$[], type[]
 	var record$ = ""
-	dim phase[0]
+	var phase = NONE
 	var index = 0
 	var isRecorded = false
 	
 	while true
 		var c$ = mid$(string$, index, 1)
 
-		if c$ == chr$(34) && !len(phase) then
-			push phase, STRING
+		if c$ == chr$(34) && phase != NONE then
+			phase = STRING
 			isRecorded = true
 			inc index
-		elseif c$ == chr$(34) && !len(phase) then
-			push type, pop(phase)
+		elseif c$ == chr$(34) && phase == STRING then
+			push type, phase : phase = NONE
 			push tk$, record$ + chr$(34)
 			record$ = ""
 			isRecorded = false
 			inc index
-		elseif len(phase) && phase[len(phase) - 1] == STRING && index != len(string$) - 1 then
+		elseif phase == STRING && index != len(string$) - 1 then
 			inc index
-		elseif c$ == chr$(34) && phase[len(phase) - 1] != STRING then
-			if indexOf$(reservedWords$, record$) != -1 then phase[len(phase) - 1] = RESERVED
-			if indexOf$(operators$, record$) != -1 then phase[len(phase) - 1] = OPERATOR
-			push type, pop(phase)
+		elseif c$ == chr$(34) && phase != STRING then
+			if indexOf$(reservedWords$, record$) != -1 then phase = RESERVED
+			if indexOf$(operators$, record$) != -1 then phase = OPERATOR
+			if phase == DIRECTION && indexOf$(constants$, record$) != -1 then phase = CONSTANT
+			push type, phase : phase = NONE
 			push tk$, record$
 			record$ = ""
-			push phase, STRING
+			phase = STRING
 			inc index
 		elseif c$ == "#" then
-			push phase, DIRECTION
+			phase = DIRECTION
 			isRecorded = true
 			inc index
 		elseif c$ == " " || index == len(string$) - 1 then
-			if len(phase) then
-				if phase[len(phase) - 1] == UNKNOWN then
-					if indexOf$(reservedWords$, record$) != -1 then phase[len(phase) - 1] = RESERVED
-					if indexOf$(operators$, record$) != -1 then phase[len(phase) - 1] = OPERATOR
-				endif
-				if phase[len(phase) - 1] == DIRECTION && indexOf$(constants$, record$) != -1 then phase[len(phase) - 1] = CONSTANT
-				if phase[len(phase) - 1] == STRING then ? "Error: 文字列定数がダブルクォートによって正しく閉じられていません" : break
-				push type, pop(phase)
-				push tk$, record$
-				record$ = ""
-				isRecorded = false
+			if phase == UNKNOWN then
+				if indexOf$(reservedWords$, record$) != -1 then phase = RESERVED
+				if indexOf$(operators$, record$) != -1 then phase = OPERATOR
 			endif
+			if phase == DIRECTION && indexOf$(constants$, record$) != -1 then phase = CONSTANT
+			if phase == STRING then ? "Error: 文字列定数がダブルクォートによって正しく閉じられていません" : break
+			push type, phase : phase = NONE
+			push tk$, record$
+			record$ = ""
+			isRecorded = false
 			inc index
 		elseif c$ != " " && !isRecorded then
-			push phase, UNKNOWN
+			phase = UNKNOWN
 			isRecorded = true
 			inc index
 		else
