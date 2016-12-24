@@ -134,10 +134,12 @@ def lex string$, tk$[], type[]
 			endif
 			if phase == DIRECTION && indexOf$(constants$, record$) != -1 then phase = CONSTANT
 			if phase == STRING then ? "Error: 文字列定数がダブルクォートによって正しく閉じられていません" : break
-			push type, phase : phase = NONE
-			push tk$, record$
-			record$ = ""
-			isRecorded = false
+			if phase != NONE then
+				push type, phase : phase = NONE
+				push tk$, record$
+				record$ = ""
+				isRecorded = false
+			endif
 			inc index
 		elseif c$ != " " && !isRecorded then
 			phase = UNKNOWN
