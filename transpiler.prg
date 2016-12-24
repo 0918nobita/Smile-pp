@@ -114,6 +114,14 @@ def lex string$, tk$[], type[]
 			inc index
 		elseif len(phase) && phase[len(phase) - 1] == STRING && index != len(string$) - 1 then
 			inc index
+		elseif c$ == chr$(34) && phase[len(phase) - 1] != STRING then
+			if indexOf$(reservedWords$, record$) != -1 then phase[len(phase) - 1] = RESERVED
+			if indexOf$(operators$, record$) != -1 then phase[len(phase) - 1] = OPERATOR
+			push type, pop(phase)
+			push tk$, record$
+			record$ = ""
+			push phase, STRING
+			inc index
 		elseif c$ == "#" then
 			push phase, DIRECTION
 			isRecorded = true
