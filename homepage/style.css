@@ -31,7 +31,7 @@ a[href^="http"]:hover {
 	color: white;
 }
 pre {
-		background-color: #202020;
-		color: #EEEEEE;
-		padding: 1em;
-	}
+	background-color: #202020;
+	color: #EEEEEE;
+	padding: 1em;
+}
