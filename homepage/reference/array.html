@@ -9,6 +9,9 @@
 		width: 1200px;
 		margin: auto;
 	}
+	h1 {
+		color: #008888;
+	}
 	p {
 		font-size: 15px;
 		color: #111;
@@ -20,6 +23,15 @@
 		color: #EEEEEE;
 		padding: 1em;
 	}
+	a {
+		text-decoration: none;
+		color: #369;
+		padding: 2px;
+	}
+	a:hover {
+		background-color: #369;
+		color: white;
+	}
 	</style>
 </head>
 <body>
@@ -27,7 +39,7 @@
 	<p><a href="../index.html">←トップに戻る</a></p>
 	<h2>Arrayモジュール</h2>
 	<ul>
-		<li>implode$ 配列の要素を結合して文字列にする</li>
+		<li><a href="#implode">implode$ 配列の要素を結合して文字列にする</a></li>
 		<li>indexOf / indexOf$ 配列の要素を検索する</li>
 	</ul>
 	<p>以下、関数名の接頭辞が arr- のものは『疑似多次元配列』を扱う関数となっています。</p>
@@ -37,9 +49,13 @@
 		<li>arrSize 疑似多次元配列の要素数を取得する</li>
 		<li>arrUniq 疑似多次元配列の重複要素を排除する</li>
 	</ul>
-	<h3>implode$ - 配列の要素を結合して文字列にする</h3>
-	<h4 title="option strictで実行する場合の定義コードです">定義コード</h4>
-	<pre><code class="php">def implode$(array$[], glue$)
+	<h3 id="implode">implode$ - 配列の要素を結合して文字列にする <small>(Version 2017.1 ～)</small></h3>
+	<p><b><font color="#693">string</font> <font color="#369">implode$</font> ( <font color="#693">array</font> <font color="#369">array$</font>, <font color="#693">string</font> <font color="#369">glue$</font> )</b></p>
+	<p><b><font color="#369">array</font></b>　連結したい文字列の配列<br><b><font color="#369">glue$</font></b>　各要素間に挟まれる文字列</p>
+	<p>トランスパイルを行う場合、第二引数 <b><font color="#369">glue$</font></b> は省略可能です。(デフォルト値は空文字)</p>
+	<p>返り値　すべての配列要素の順序を変えずに、各要素間に <b><font color="#369">glue$</font></b> をはさんで 1 つの文字列にして返します。</p>
+	<h4>定義コード　<small>厳格モードで実行する場合の定義コードです</small></h4>
+	<pre><code>def implode$(array$[], glue$)
 	var i
 	var rv$
 	for i = 0 to len(array$) - 1
