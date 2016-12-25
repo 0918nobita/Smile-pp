@@ -1,3 +1,7 @@
+# 別タブで開くリンクに付与されるアイコン
+
+homepage/res/external-link.png
+
 # 以下はCompressed版関数ライブラリ(実際にリリースされる関数ライブラリはこのCompressed版のみ)
 
 array.min.prg
