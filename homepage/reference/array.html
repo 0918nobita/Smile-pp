@@ -15,6 +15,11 @@
 		margin-bottom: 2em;
 		line-height: 1.7;
 	}
+	pre {
+		background-color: #202020;
+		color: #EEEEEE;
+		padding: 1em;
+	}
 	</style>
 </head>
 <body>
@@ -22,7 +27,7 @@
 	<p><a href="../index.html">←トップに戻る</a></p>
 	<h2>Arrayモジュール</h2>
 	<ul>
-		<li>implode 配列の要素を結合して文字列にする</li>
+		<li>implode$ 配列の要素を結合して文字列にする</li>
 		<li>indexOf / indexOf$ 配列の要素を検索する</li>
 	</ul>
 	<p>以下、関数名の接頭辞が arr- のものは『疑似多次元配列』を扱う関数となっています。</p>
@@ -32,5 +37,19 @@
 		<li>arrSize 疑似多次元配列の要素数を取得する</li>
 		<li>arrUniq 疑似多次元配列の重複要素を排除する</li>
 	</ul>
+	<h3>implode$ - 配列の要素を結合して文字列にする</h3>
+	<h4 title="option strictで実行する場合の定義コードです">定義コード</h4>
+	<pre><code class="php">def implode$(array$[], glue$)
+	var i
+	var rv$
+	for i = 0 to len(array$) - 1
+		if i == 0 then
+			rv$ = array$[i]
+		else
+			rv$ = rv$ + glue$ + array$[i]
+		endif
+	next
+	return rv$
+end</code></pre>
 </body>
 </html>
