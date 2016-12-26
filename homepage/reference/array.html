@@ -11,7 +11,7 @@
 	<h2>Arrayモジュール</h2>
 	<ul>
 		<li><a href="#implode">implode$ 配列の要素を結合して文字列にする</a></li>
-		<li>indexOf / indexOf$ 配列の要素を検索する</li>
+		<li><a href="#indexOf">indexOf / indexOf$ 配列の要素を検索する</a></li>
 	</ul>
 	<p>以下、関数名の接頭辞が arr- のものは『疑似多次元配列』を扱う関数となっています。</p>
 	<ul>
@@ -37,6 +37,32 @@
 		endif
 	next
 	return rv$
+end</code></pre>
+	<h3 id="indexOf">indexOf / indexOf$ - 配列の要素を検索する <small>(Version 2017.1 ～)</small></h3>
+	<p><b><font color="#693">int</font> <font color="#369">indexOf</font> ( <font color="#693">array</font> <font color="#369">array</font>, <font color="#693">int</font> <font color="#369">num</font> )</b></p>
+	<p><b><font color="#369">array</font></b> 検索対象の整数型または実数型の配列<br>
+	<b><font color="#369">num</font></b> 検索する整数型または実数型データ</p>
+	<p>返り値　<b><font color="#369">num</font></b> が <b><font color="#369">array</font></b> 内に含まれている場合は最初に見つかった位置のインデックス番号を、見つからない場合は <b>-1</b> を返します。</p>
+	<hr>
+	<p><b><font color="#693">int</font> <font color="#369">indexOf$</font> ( <font color="#693">array</font> <font color="#369">array$</font>, <font color="#693">string</font> <font color="#369">string</font> )</b></p>
+	<p><b><font color="#369">array</font></b> 検索対象の文字列型の配列<br>
+	<b><font color="#369">string</font></b> 検索する文字列型データ</p>
+	<p>返り値　<b><font color="#369">string</font></b> が <b><font color="#369">array$</font></b> 内に含まれている場合は最初に見つかった位置のインデックス番号を、見つからない場合は <b>-1</b> を返します。</p>
+	<h4>定義コード　<small>厳格モードで実行する場合の定義コードです</small></h4>
+	<pre><code>def indexOf(array[], num)
+	var i
+	for i = 0 to len(array) - 1
+		if array[i] == num then return i
+	next
+	return -1
+end
+
+def indexOf$(array$[], string$)
+	var i
+	for i = 0 to len(array$) - 1
+		if array$[i] == string$ then return i
+	next
+	return -1
 end</code></pre>
 </body>
 </html>
