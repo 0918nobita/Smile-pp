@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>Stringモジュール | Smile++</title>
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+	<h1>Smile++</h1>
+	<p><a href="../index.html">←トップに戻る</a></p>
+	<h2>Stringモジュール</h2>
+	<ul>
+		<li><a href="#downcase">downcase$ 文字列中の大文字アルファベットを小文字にする</a></li>
+		<li><a href="#gsub">gsub$ 文字列の一部を置換する</a></li>
+		<li><a href="#insert">insert$ 文字列の指定位置に別の文字列を挿入する</a></li>
+		<li><a href="#upcase">upcase$ 文字列中の小文字アルファベットを大文字にする</a></li>
+	</ul>
+	<h3 id="downcase">downcase$ - 文字列中の大文字アルファベットを小文字にする</h3>
+	<h3 id="gsub">gsub$ - 文字列の一部を置換する</h3>
+	<h3 id="insert">insert$ - 文字列の指定位置に別の文字列を挿入する</h3>
+	<h3 id="upcase">upcase$ - 文字列中の小文字アルファベットを大文字にする</h3>
+	<!--
+	<h3 id="implode">implode$ - 配列の要素を結合して文字列にする <small>(Version 2017.1 ～)</small></h3>
+	<p><b><font color="#693">string</font> <font color="#369">implode$</font> ( <font color="#693">array</font> <font color="#369">array$</font>, <font color="#693">string</font> <font color="#369">glue$</font> )</b></p>
+	<p><b><font color="#369">array</font></b>　連結したい文字列の配列<br><b><font color="#369">glue$</font></b>　各要素間に挟まれる文字列</p>
+	<p>トランスパイルを行う場合、第二引数 <b><font color="#369">glue$</font></b> は省略可能です。(デフォルト値は空文字)</p>
+	<p>返り値　すべての配列要素の順序を変えずに、各要素間に <b><font color="#369">glue$</font></b> をはさんで 1 つの文字列にして返します。</p>
+	<h4>定義コード　<small>厳格モードで実行する場合の定義コードです</small></h4>
+	<pre><code>def implode$(array$[], glue$)
+	var i
+	var rv$
+	for i = 0 to len(array$) - 1
+		if i == 0 then
+			rv$ = array$[i]
+		else
+			rv$ = rv$ + glue$ + array$[i]
+		endif
+	next
+	return rv$
+end</code></pre>
+	-->
+</body>
+</html>
