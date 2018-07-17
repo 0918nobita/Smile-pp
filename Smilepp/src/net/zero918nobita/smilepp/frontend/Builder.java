@@ -12,7 +12,21 @@ public class Builder {
 
   @Override
   public String toString() {
-    return source.toString();
+    StringBuilder result = new StringBuilder();
+
+    for (int il = 0; il < source.size(); il++) {
+      result.append("L");
+      result.append(il);
+      result.append(":\n");
+
+      for (int is = 0; is < source.get(il).size(); is++) {
+        result.append("  ");
+        result.append(source.get(il).get(is));
+        result.append("\n");
+      }
+    }
+
+    return result.toString();
   }
 
   public void addStm(Stm stm) {
