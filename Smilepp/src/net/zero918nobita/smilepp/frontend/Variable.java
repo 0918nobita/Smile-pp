@@ -1,6 +1,6 @@
 package net.zero918nobita.smilepp.frontend;
 
-public class Variable extends Expression {
+public class Variable extends Node {
   private String name;
 
   public Variable() {}
