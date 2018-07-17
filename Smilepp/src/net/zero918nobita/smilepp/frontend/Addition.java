@@ -1,14 +1,20 @@
 package net.zero918nobita.smilepp.frontend;
 
-public class Addition extends Expression {
+public class Addition extends Stm {
+  private Variable variable;
   private Expression expr1;
   private Expression expr2;
 
   public Addition() {}
 
-  public Addition(Expression expr1, Expression expr2) {
+  public Addition(Variable variable, Expression expr1, Expression expr2) {
+    this.variable = variable;
     this.expr1 = expr1;
     this.expr2 = expr2;
+  }
+
+  public void setVariable(Variable variable) {
+    this.variable = variable;
   }
 
   public void setExpr1(Expression expr) {
@@ -20,6 +26,6 @@ public class Addition extends Expression {
   }
 
   public String toString() {
-    return expr1 + " + " + expr2;
+    return variable + " = " + expr1 + " + " + expr2;
   }
 }
