@@ -1,18 +1,25 @@
 package net.zero918nobita.smilepp.frontend;
 
+import java.util.ArrayList;
+
 public class Builder {
-  private String source;
+  private ArrayList<ArrayList<Stm>> source;
 
   public Builder() {
-    source = "";
+    source = new ArrayList<>();
+    addLabel();
   }
 
   @Override
   public String toString() {
-    return source;
+    return source.toString();
   }
 
   public void addStm(Stm stm) {
-    source += stm;
+    source.get(source.size() - 1).add(stm);
+  }
+
+  public void addLabel() {
+    source.add(new ArrayList<>());
   }
 }
