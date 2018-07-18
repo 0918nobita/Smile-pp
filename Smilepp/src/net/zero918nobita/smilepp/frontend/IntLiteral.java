@@ -7,6 +7,7 @@ public class IntLiteral extends Node {
     this.n = n;
   }
 
+  @Override
   public String toString() {
     return String.valueOf(n);
   }

@@ -25,6 +25,7 @@ public class Addition extends Stm {
     right = node;
   }
 
+  @Override
   public String toString() {
     return variable + " = " + left + " + " + right;
   }
