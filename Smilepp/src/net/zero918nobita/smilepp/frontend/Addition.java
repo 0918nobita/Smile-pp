@@ -2,31 +2,25 @@ package net.zero918nobita.smilepp.frontend;
 
 public class Addition extends Stm {
   private Variable variable;
-  private Node left;
-  private Node right;
+  private Node adder;
 
   public Addition() {}
 
-  public Addition(Variable variable, Node left, Node right) {
+  public Addition(Variable variable, Node adder) {
     this.variable = variable;
-    this.left = left;
-    this.right = right;
+    this.adder = adder;
   }
 
   public void setVariable(Variable variable) {
     this.variable = variable;
   }
 
-  public void setLeft(Node node) {
-    left = node;
-  }
-
-  public void setRight(Node node) {
-    right = node;
+  public void setAdder(Node node) {
+    adder = node;
   }
 
   @Override
   public String toString() {
-    return variable + " = " + left + " + " + right;
+    return variable + " += " + adder;
   }
 }
