@@ -14,15 +14,16 @@ package net.zero918nobita {
 
     package frontend {
       class Addition {
-        + void setExpr1
-        + void setExpr2
-        + String toString
+        + void setVariable()
+        + void setLeft()
+        + void setRight()
+        + String toString()
       }
 
       class AssignStm {
-        + void setVariable
-        + void setValue
-        + String toString
+        + void setVariable()
+        + void setValue()
+        + String toString()
       }
 
       class Builder

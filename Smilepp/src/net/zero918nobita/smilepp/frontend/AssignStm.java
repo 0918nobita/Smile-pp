@@ -2,24 +2,24 @@ package net.zero918nobita.smilepp.frontend;
 
 public class AssignStm extends Stm {
   private Variable variable;
-  private Node node;
+  private Node value;
 
   public AssignStm() {}
 
   public AssignStm(Variable variable, Node node) {
     this.variable = variable;
-    this.node = node;
+    this.value = node;
   }
 
   public void setVariable(Variable variable) {
     this.variable = variable;
   }
 
-  public void setExpression(Node node) {
-    this.node = node;
+  public void setValue(Node node) {
+    this.value = node;
   }
 
   public String toString() {
-    return variable + " = " + node;
+    return variable + " = " + value;
   }
 }
