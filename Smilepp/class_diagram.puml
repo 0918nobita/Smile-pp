@@ -36,6 +36,9 @@ package net.zero918nobita {
         + String toString()
       }
 
+      class IfStm {
+      }
+
       abstract class Node
       abstract class Stm
 
@@ -45,6 +48,7 @@ package net.zero918nobita {
 
       Addition <|-- Stm
       AssignStm <|-- Stm
+      IfStm <|-- Stm
       IntLiteral <|-- Node
       Variable <|-- Node
     }
