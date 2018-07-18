@@ -26,11 +26,23 @@ package net.zero918nobita {
         + String toString()
       }
 
-      class Builder
-      class IntLiteral
+      class Builder {
+        + String toString()
+        + void addStm()
+        + void addLabel()
+      }
+
+      class IntLiteral {
+        + String toString()
+      }
+
       abstract class Node
       abstract class Stm
-      class Variable
+
+      class Variable {
+        + void setName(String name)
+      }
+
       Addition <|-- Stm
       AssignStm <|-- Stm
       IntLiteral <|-- Node
