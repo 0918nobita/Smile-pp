@@ -1,9 +1,19 @@
 @startuml
 
 package net.zero918nobita {
-  package inverse {
+  package acinonyx {
     class Main {
-      + {static} main(String[] args)
+      + {static} void main(String[] args)
+    }
+
+    class Lexer {
+      + {static} ArrayList<ArrayList<Token>> lex(String src)
+    }
+
+    class Token {
+      + void Token(String name, int line, int letter)
+      + boolean equals(Object o)
+      + String toString()
     }
   }
 
