@@ -1,4 +1,4 @@
 package net.zero918nobita.smilepp.frontend;
 
-abstract class Node {
+public abstract class Node {
 }
