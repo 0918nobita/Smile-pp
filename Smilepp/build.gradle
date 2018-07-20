@@ -6,8 +6,10 @@ group 'net.zero918nobita'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'application'
 
 sourceCompatibility = 1.8
+mainClassName = 'net.zero918nobita.acinonyx.Main'
 
 repositories {
     mavenCentral()
