@@ -1,4 +1,4 @@
-package net.zero918nobita.acinonyx;
+package net.zero918nobita.inverse;
 
 import net.zero918nobita.smilepp.frontend.Addition;
 import net.zero918nobita.smilepp.frontend.AssignStm;

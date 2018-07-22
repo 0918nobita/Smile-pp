@@ -1,4 +1,4 @@
-package net.zero918nobita.acinonyx;
+package net.zero918nobita.inverse;
 
 class Token {
   private String name;
