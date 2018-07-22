@@ -1,5 +1,7 @@
 # Smile++
 
+[![Build Status](https://travis-ci.org/0918nobita/Smile-pp.svg?branch=develop)](https://travis-ci.org/0918nobita/Smile-pp) [![Coverage Status](https://coveralls.io/repos/github/0918nobita/Smile-pp/badge.svg?branch=develop)](https://coveralls.io/github/0918nobita/Smile-pp?branch=develop)
+
 SmileBASICを目的コードとする言語処理系の基盤
 
 <img src="./Smile++.png" alt="Smile++ の全体像">
