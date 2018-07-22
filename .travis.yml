@@ -1,7 +1,7 @@
 language: java
 jdk: oraclejdk8
 script:
-  - cd $TRAVIS_BUILD_DIR/smilepp
+  - cd $TRAVIS_BUILD_DIR/Smilepp
   - ./gradlew test
 
 after_success:
