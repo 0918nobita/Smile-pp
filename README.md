@@ -1,6 +1,6 @@
 # Smile++
 
-[![Build Status](https://travis-ci.org/0918nobita/Smile-pp.svg?branch=develop)](https://travis-ci.org/0918nobita/Smile-pp) [![Coverage Status](https://coveralls.io/repos/github/0918nobita/Smile-pp/badge.svg?branch=develop)](https://coveralls.io/github/0918nobita/Smile-pp?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/5683c5d187e0d2b59e1d/maintainability)](https://codeclimate.com/github/0918nobita/Smile-pp/maintainability)
+[![Build Status](https://travis-ci.org/0918nobita/Smile-pp.svg?branch=develop)](https://travis-ci.org/0918nobita/Smile-pp) [![Coverage Status](https://coveralls.io/repos/github/0918nobita/Smile-pp/badge.svg?branch=develop)](https://coveralls.io/github/0918nobita/Smile-pp?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/5683c5d187e0d2b59e1d/maintainability)](https://codeclimate.com/github/0918nobita/Smile-pp/maintainability) [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
 SmileBASICを目的コードとする言語処理系の基盤
 
