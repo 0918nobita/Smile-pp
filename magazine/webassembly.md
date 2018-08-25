@@ -1,4 +1,19 @@
-# Sections
+<style>
+body {
+  font-family: "Source Code Pro";
+}
+p {
+  text-indent: 1em;
+}
+</style>
+
+# WebAssembly
+
+WebAssembly はコードのフォーマットのひとつです．
+
+WebAssembly is standard, a safe, portable, low-level code format designed for efficient execution and compact representation. 
+
+## Sections
 
 - Type: 関数のシグネチャの配列
 - Import: インポートの配列
