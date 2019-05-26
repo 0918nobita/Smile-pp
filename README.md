@@ -1,25 +1,38 @@
 # Smile++
 
-[![Build Status](https://travis-ci.org/0918nobita/Smile-pp.svg?branch=develop)](https://travis-ci.org/0918nobita/Smile-pp) [![Coverage Status](https://coveralls.io/repos/github/0918nobita/Smile-pp/badge.svg?branch=develop)](https://coveralls.io/github/0918nobita/Smile-pp?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/5683c5d187e0d2b59e1d/maintainability)](https://codeclimate.com/github/0918nobita/Smile-pp/maintainability) [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+SmileBASIC でメタプログラミングをするためのフレームワーク
 
-SmileBASICを目的コードとする言語処理系の基盤
+## 概要
 
-<img src="./Smile++.png" alt="Smile++ の全体像">
+SmileBASIC にメタプログラミング用の仕様を追加した独自言語「Smile++」で記述されたプログラムを、  
+プリプロセッサを通じて SmileBASIC のプログラムに変換する。
 
-<!-- ## 関数ライブラリ
+### 動作原理
 
-## トランスパイラ
+プリプロセッサは文字列形式でソースコードを受け取り、パーサを用いて AST (抽象構文木) を生成する。  
+このとき Smile++ の独自構文が用いられている部分については、パース処理を一旦停止してそれを実行してからパース処理を再開する。  
+AST を変換するための独自構文が実行された場合、ここで AST の置き換えが発生する。  
+パース処理がすべて完了したタイミングで、AST を SmileBASIC のコードへ変換して出力する。
 
-Smile++独自の構文で記述したPRGリソースを、SmileBASICインタプリタで実行可能な通常のPRGリソースに変換するプログラム。  
-字句解析を行いそれぞれの単語の種類を特定したうえで、独自構文を使用している部分を抽出し通常の構文を使った等価のコードに置き換えて、PRGリソース全体を再構築し出力します。-->
+### Smile++ 独自構文
 
-## フロントエンド
+SmileBASIC に以下の構文を追加し、プリプロセス時に作用させる。
 
-ソースコードを受け取り、Smile++ IR を出力するプログラム
+#### 属性 (Attribute)
 
-## Smile++ Core
+AST に追加データ (実際には配列) である属性を付与する作用をもつ。
 
-いくつかの **Pass** ( Smile++ IRを入力として受け取り、Smile++ IR を出力するプログラム ) が連結し、  
-フロントエンドで生成された Smile++ IR がそれらを通して解析・編集されていく。
+- ``[@ ...]`` : 式
+- ``[@@ ...]`` : 文
+- ``[@@@ ...]`` : ソース全体
 
-最終的に Code Generator を通して Smile++ IR から SmileBASIC のソースコードが出力される。
+#### 拡張 (Extension)
+
+AST と別途指定したものを引数として関数に渡してプリプロセス時に呼び出して、返された AST で上書きする作用をもつ。
+
+- ``[%(関数名) (第 2 引数), (第 3 引数), ...]`` : 式
+- ``[%%(関数名) (第 2 引数), (第 3 引数), ...]`` : 文
+
+### Smile++ 拡張の開発
+
+Smile++ でプリプロセス時に呼び出す関数を定義するプログラムを作成できる。

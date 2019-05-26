@@ -2,35 +2,25 @@ body {
 	font-family: メイリオ, ヒラギノ;
 	padding: 80px;
 }
+
 h1 {
 	color: #008888;
 }
+
 p {
 	font-size: 15px;
 	color: #111;
 	margin-bottom: 2em;
 	line-height: 1.7;
 }
+
 a {
 	text-decoration: none;
 	color: #369;
 	padding: 2px;
 }
+
 a:hover {
 	background-color: #369;
 	color: white;
-}
-a[href^="http"] {
-	background:url("./res/external-link.png") no-repeat right center;
-	padding-right:18px;
-	margin-right:5px;
-}
-a[href^="http"]:hover {
-	background-color: #369;
-	color: white;
-}
-pre {
-	background-color: #202020;
-	color: #EEEEEE;
-	padding: 1em;
 }
